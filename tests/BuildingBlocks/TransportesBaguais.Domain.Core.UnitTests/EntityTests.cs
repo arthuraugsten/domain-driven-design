@@ -6,7 +6,7 @@ public sealed class EntityTests
 
     [Fact]
     public void Id_Should_Be_Not_Null_When_Object_Created()
-        => _entity.Id.Should().NotBeEmpty();
+        => _entity.Id.Value.Should().NotBeEmpty();
 
     [Fact]
     public void Generic_Equals_Should_Return_False_When_Different_Type()
@@ -31,7 +31,7 @@ public sealed class EntityTests
     [Fact]
     public void Specialized_Equals_Should_Return_True_When_Same_Instance()
         => _entity.Equals(_entity).Should().BeTrue();
-    
+
     [Fact]
     public void Specialized_Equals_Should_Return_False_When_Null()
         => _entity.Equals(null).Should().BeFalse();
@@ -39,11 +39,11 @@ public sealed class EntityTests
     [Fact]
     public void Operator_Equal_Should_Return_False_When_First_Is_Null()
         => (null == _entity).Should().BeFalse();
-    
+
     [Fact]
     public void Operator_Equal_Should_Return_False_When_Second_Is_Null()
         => (_entity == null).Should().BeFalse();
-    
+
     [Fact]
     public void Operator_Equal_Should_Return_True_When_Both_Null()
         => ((MyEntity?)null == null).Should().BeTrue();
@@ -62,11 +62,11 @@ public sealed class EntityTests
     [Fact]
     public void Operator_Different_Should_Return_True_When_First_Is_Null()
         => (null != _entity).Should().BeTrue();
-    
+
     [Fact]
     public void Operator_Different_Should_Return_True_When_Second_Is_Null()
         => (_entity != null).Should().BeTrue();
-    
+
     [Fact]
     public void Operator_Different_Should_Return_False_When_Both_Null()
         => ((MyEntity?)null != null).Should().BeFalse();
@@ -82,7 +82,9 @@ public sealed class EntityTests
         (_entity != anotherVariable).Should().BeFalse();
     }
 
-    private sealed class MyEntity : Entity { }
+    private sealed record MyId : EntityId { }
+
+    private sealed class MyEntity : Entity<MyId> { }
 
     private sealed class SecondType { }
 }
