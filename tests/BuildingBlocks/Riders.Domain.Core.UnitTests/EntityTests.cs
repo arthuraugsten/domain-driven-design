@@ -1,4 +1,4 @@
-namespace TransportesBaguais.Domain.Core.UnitTests;
+namespace Riders.Domain.Core.UnitTests;
 
 public sealed class EntityTests
 {

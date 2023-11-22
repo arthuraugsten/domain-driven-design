@@ -1,8 +1,5 @@
-using System;
+namespace Riders.Domain.Core;
 
-namespace TransportesBaguais.Domain.Core;
-
-// TODO: Convert to ID as Value Object. (On Goining...)
 public abstract class Entity<TId> : IEquatable<Entity<TId>>
     where TId : EntityId, new()
 {
