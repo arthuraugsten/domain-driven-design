@@ -15,12 +15,12 @@ internal sealed class ShipmentMap : IEntityTypeConfiguration<Shipment>
         
         builder.ComplexProperty(t => t.Destination, complexBuilder =>
         {
-            complexBuilder.Property(t => t.Street).HasMaxLength(250);
-            complexBuilder.Property(t => t.PostalCode).HasMaxLength(250);
-            complexBuilder.Property(t => t.City).HasMaxLength(250);
-            complexBuilder.Property(t => t.Country).HasMaxLength(250);
-            complexBuilder.Property(t => t.Phone).HasMaxLength(250);
-            complexBuilder.Property(t => t.State).HasMaxLength(25);
+            complexBuilder.Property(t => t.Street).HasMaxLength(250).IsRequired();
+            complexBuilder.Property(t => t.PostalCode).HasMaxLength(250).IsRequired();
+            complexBuilder.Property(t => t.City).HasMaxLength(250).IsRequired();
+            complexBuilder.Property(t => t.Country).HasMaxLength(250).IsRequired();
+            complexBuilder.Property(t => t.Phone).HasMaxLength(250).IsRequired();
+            complexBuilder.Property(t => t.State).HasMaxLength(25).IsRequired();
         });
 
         builder.Property(t => t.CreatedAt).IsRequired();
