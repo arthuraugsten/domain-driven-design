@@ -1,9 +1,11 @@
 namespace Riders.Domain.Core;
 
 public abstract class Entity<TId> : IEquatable<Entity<TId>>
-    where TId : EntityId, new()
+    where TId : EntityId
 {
-    public TId Id { get; protected set; } = new();
+    protected Entity(TId id) => Id = id;
+
+    public TId Id { get; protected set; }
 
     public override bool Equals(object? obj) => Equals(obj as Entity<TId>);
 

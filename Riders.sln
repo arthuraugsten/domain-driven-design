@@ -21,7 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shipments", "Shipments", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riders.Shipments", "src\Services\Shipments\Riders.Shipments\Riders.Shipments.csproj", "{1234DD0B-519C-4BCC-9E2A-2FEE05A498B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riders.Data.Core", "src\BuildingBlocks\Riders.Data.Core\Riders.Data.Core.csproj", "{4C63938A-82A8-4E46-BA0E-15CBA8ED02C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riders.Data.Core", "src\BuildingBlocks\Riders.Data.Core\Riders.Data.Core.csproj", "{4C63938A-82A8-4E46-BA0E-15CBA8ED02C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riders.Application.Core", "src\BuildingBlocks\Riders.Application.Core\Riders.Application.Core.csproj", "{7F405FAC-2024-4BE2-BE69-E9E7EA53B277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riders.Api.Core", "src\BuildingBlocks\Riders.Api.Core\Riders.Api.Core.csproj", "{A8650EC0-106D-4180-AA21-59C658E9F544}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{4C63938A-82A8-4E46-BA0E-15CBA8ED02C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C63938A-82A8-4E46-BA0E-15CBA8ED02C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C63938A-82A8-4E46-BA0E-15CBA8ED02C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F405FAC-2024-4BE2-BE69-E9E7EA53B277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F405FAC-2024-4BE2-BE69-E9E7EA53B277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F405FAC-2024-4BE2-BE69-E9E7EA53B277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F405FAC-2024-4BE2-BE69-E9E7EA53B277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8650EC0-106D-4180-AA21-59C658E9F544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8650EC0-106D-4180-AA21-59C658E9F544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8650EC0-106D-4180-AA21-59C658E9F544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8650EC0-106D-4180-AA21-59C658E9F544}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +70,8 @@ Global
 		{429C18BC-A234-43E9-A081-24893CED0AA2} = {787ECC2C-46AB-436E-8094-F0BEBBBB50B5}
 		{1234DD0B-519C-4BCC-9E2A-2FEE05A498B2} = {429C18BC-A234-43E9-A081-24893CED0AA2}
 		{4C63938A-82A8-4E46-BA0E-15CBA8ED02C7} = {44929FD6-9A05-401B-83E7-C45B865DF425}
+		{7F405FAC-2024-4BE2-BE69-E9E7EA53B277} = {44929FD6-9A05-401B-83E7-C45B865DF425}
+		{A8650EC0-106D-4180-AA21-59C658E9F544} = {44929FD6-9A05-401B-83E7-C45B865DF425}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B6CB063-AE72-4C63-84C9-E81B277E0487}

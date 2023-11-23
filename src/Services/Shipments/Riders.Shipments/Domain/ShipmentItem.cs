@@ -2,7 +2,7 @@
 
 namespace Riders.Shipments.Domain;
 
-public sealed class ShipmentItem(string description, decimal quantity, decimal unitPrice) : Entity<ShipmentId>
+public sealed class ShipmentItem(string description, decimal quantity, decimal unitPrice) : Entity<ShipmentId>(new(Guid.NewGuid()))
 {
     private decimal? _total;
 
@@ -10,5 +10,4 @@ public sealed class ShipmentItem(string description, decimal quantity, decimal u
     public decimal Quantity { get; private set; } = quantity;
     public decimal UnitPrice { get; private set; } = unitPrice;
     public decimal Total => _total ??= Quantity * UnitPrice;
-
 }

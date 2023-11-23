@@ -17,10 +17,10 @@ internal static class ShipmentEndpoints
             var response = await sender.Send(RegisterShipmentRequestMapper.ToCommand(request), cancellationToken);
 
             return Results.Created($"/{_routeName}/{response.Id}", response);
-        })
-        .WithName("RegisterShipment")
-        .WithOpenApi()
-        .Produces<RegisterShipmentCommandResult>(StatusCodes.Status201Created)
-        .Produces(StatusCodes.Status400BadRequest);
+        }).AddEndpointFilter<RequestValidatorFilter<RegisterShipmentRequest>>()
+            .WithName("RegisterShipment")
+            .WithOpenApi()
+            .Produces<RegisterShipmentCommandResult>(StatusCodes.Status201Created)
+            .Produces(StatusCodes.Status400BadRequest);
     }
 }

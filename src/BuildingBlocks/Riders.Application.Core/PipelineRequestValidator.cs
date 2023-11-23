@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 
-namespace Riders.Shipments.Application;
+namespace Riders.Application.Core;
 
 public class PipelineRequestValidator<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
         : IPipelineBehavior<TRequest, TResponse?> where TRequest : IRequest<TResponse?>

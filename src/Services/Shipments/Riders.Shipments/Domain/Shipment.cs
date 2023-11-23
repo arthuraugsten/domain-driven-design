@@ -6,7 +6,7 @@ public sealed class Shipment : Entity<ShipmentId>, IAggregateRoot
 {
     private readonly List<ShipmentItem> _items = [];
 
-    public Shipment(Destination destination, List<ShipmentItem> items)
+    public Shipment(Destination destination, List<ShipmentItem> items) : base(new(Guid.NewGuid()))
     {
         DomainArgumentException.ThrowIfNull(destination);
 
@@ -18,7 +18,7 @@ public sealed class Shipment : Entity<ShipmentId>, IAggregateRoot
     }
 
     public Destination Destination { get; private set; }
-    public DateTime CreatedAt { get; init; } = DateTime.Now;
+    public DateTime CreatedAt { get; private init; } = DateTime.Now;
 
     public IReadOnlyList<ShipmentItem> Items => _items;
 }

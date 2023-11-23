@@ -2,7 +2,8 @@ namespace Riders.Domain.Core.UnitTests;
 
 public sealed class EntityTests
 {
-    private readonly MyEntity _entity = new();
+    private readonly MyEntity _entity = new(new(Guid.NewGuid()));
+    private readonly MyId _id = new(Guid.NewGuid());
 
     [Fact]
     public void Id_Should_Be_Not_Null_When_Object_Created()
@@ -14,7 +15,7 @@ public sealed class EntityTests
 
     [Fact]
     public void Generic_Equals_Should_Return_False_When_Same_Type_Different_Instance()
-        => _entity.Equals((object)new MyEntity()).Should().BeFalse();
+        => _entity.Equals((object)new MyEntity(_id)).Should().BeFalse();
 
     [Fact]
     public void Generic_Equals_Should_Return_True_When_Same_Instance()
@@ -26,7 +27,7 @@ public sealed class EntityTests
 
     [Fact]
     public void Specialized_Equals_Should_Return_False_When_Same_Type_Different_Instance()
-        => _entity.Equals(new MyEntity()).Should().BeFalse();
+        => _entity.Equals(new MyEntity(_id)).Should().BeFalse();
 
     [Fact]
     public void Specialized_Equals_Should_Return_True_When_Same_Instance()
@@ -49,11 +50,11 @@ public sealed class EntityTests
         => ((MyEntity?)null == null).Should().BeTrue();
 
     [Fact]
-    public void Operator_Equal_Should_Return_False_When_Different_Identitie()
-        => (_entity == new MyEntity()).Should().BeFalse();
+    public void Operator_Equal_Should_Return_False_When_Different_Identities()
+        => (_entity == new MyEntity(_id)).Should().BeFalse();
 
     [Fact]
-    public void Operator_Equal_Should_Return_True_When_Same_Identitie()
+    public void Operator_Equal_Should_Return_True_When_Same_Identities()
     {
         var anotherVariable = _entity;
         (_entity == anotherVariable).Should().BeTrue();
@@ -72,19 +73,19 @@ public sealed class EntityTests
         => ((MyEntity?)null != null).Should().BeFalse();
 
     [Fact]
-    public void Operator_Different_Should_Return_True_When_Different_Identitie()
-        => (_entity != new MyEntity()).Should().BeTrue();
+    public void Operator_Different_Should_Return_True_When_Different_Identities()
+        => (_entity != new MyEntity(_id)).Should().BeTrue();
 
     [Fact]
-    public void Operator_Different_Should_Return_False_When_Same_Identitie()
+    public void Operator_Different_Should_Return_False_When_Same_Identities()
     {
         var anotherVariable = _entity;
         (_entity != anotherVariable).Should().BeFalse();
     }
 
-    private sealed record MyId : EntityId { }
+    private sealed record MyId(Guid Value) : EntityId(Value) { }
 
-    private sealed class MyEntity : Entity<MyId> { }
+    private sealed class MyEntity(MyId id) : Entity<MyId>(id) { }
 
     private sealed class SecondType { }
 }

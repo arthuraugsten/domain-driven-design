@@ -25,7 +25,7 @@ internal sealed class RegisterShipmentCommandValidator : AbstractValidator<Regis
         RuleFor(t => t.Country)
             .NotEmpty()
             .MinimumLength(2)
-            .MaximumLength(255);
+            .MaximumLength(10);
 
         RuleFor(t => t.PostalCode)
             .NotEmpty()
@@ -34,7 +34,6 @@ internal sealed class RegisterShipmentCommandValidator : AbstractValidator<Regis
 
         RuleFor(t => t.State)
             .NotEmpty()
-            .MinimumLength(2)
-            .MaximumLength(15);
+            .Length(2);
     }
 }
