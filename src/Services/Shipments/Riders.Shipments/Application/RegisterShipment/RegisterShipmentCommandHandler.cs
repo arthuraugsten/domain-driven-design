@@ -13,6 +13,6 @@ public class RegisterShipmentCommandHandler(IShipmentRepository _shipmentReposit
         _shipmentRepository.Add(entity);
         await _shipmentRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
 
-        return new(entity.Id.Value);
+        return new(entity.Id);
     }
 }

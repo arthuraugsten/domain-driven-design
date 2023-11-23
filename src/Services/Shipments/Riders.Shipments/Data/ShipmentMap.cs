@@ -11,8 +11,7 @@ internal sealed class ShipmentMap : IEntityTypeConfiguration<Shipment>
         builder.ToTable(nameof(Shipment));
         builder.HasKey(t => t.Id);
 
-        builder.Property(t => t.Id)
-            .HasConversion(t => t.Value, t => new ShipmentId(t));
+        builder.Property(t => t.Id).IsRequired();
         
         builder.ComplexProperty(t => t.Destination, complexBuilder =>
         {

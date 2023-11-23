@@ -2,11 +2,11 @@
 
 namespace Riders.Shipments.Domain;
 
-public sealed class Shipment : Entity<ShipmentId>, IAggregateRoot
+public sealed class Shipment : Entity, IAggregateRoot
 {
     private readonly List<ShipmentItem> _items = [];
 
-    public Shipment(Destination destination, List<ShipmentItem> items) : base(new(Guid.NewGuid()))
+    public Shipment(Destination destination, List<ShipmentItem> items)
     {
         DomainArgumentException.ThrowIfNull(destination);
 

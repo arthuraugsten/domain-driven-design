@@ -1,15 +1,12 @@
 namespace Riders.Domain.Core;
 
-public abstract class Entity<TId> : IEquatable<Entity<TId>>
-    where TId : EntityId
+public abstract class Entity : IEquatable<Entity>
 {
-    protected Entity(TId id) => Id = id;
+    public Guid Id { get; protected set; } = Guid.NewGuid();
 
-    public TId Id { get; protected set; }
+    public override bool Equals(object? obj) => Equals(obj as Entity);
 
-    public override bool Equals(object? obj) => Equals(obj as Entity<TId>);
-
-    public bool Equals(Entity<TId>? other)
+    public bool Equals(Entity? other)
     {
         if (ReferenceEquals(this, other))
             return true;
@@ -17,12 +14,12 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
         if (other is null)
             return false;
 
-        return Id.Value.Equals(other.Id);
+        return Id.Equals(other.Id);
     }
 
-    public override int GetHashCode() => GetType().GetHashCode() + (Id?.GetHashCode() ?? 0);
+    public override int GetHashCode() => GetType().GetHashCode() + Id.GetHashCode();
 
-    public static bool operator ==(Entity<TId>? a, Entity<TId>? b)
+    public static bool operator ==(Entity? a, Entity? b)
     {
         if (a is null && b is null)
             return true;
@@ -33,6 +30,6 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
         return a.Equals(b);
     }
 
-    public static bool operator !=(Entity<TId>? a, Entity<TId>? b)
+    public static bool operator !=(Entity? a, Entity? b)
         => !(a == b);
 }
